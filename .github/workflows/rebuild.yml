@@ -1,0 +1,23 @@
+name: Rebuild after changes
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  pylint:
+    uses: ./.github/workflows/pylint.yml
+  build_push:
+    needs: pylint
+    uses: ./.github/workflows/build_push.yml
+    secrets: 
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  pull_and_run:
+    needs: build_push
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        run: |
+          docker pull akon1te/my_app:latest
+          docker run -p 5000:5000 akon1te/my_app:latest
