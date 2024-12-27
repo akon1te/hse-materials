@@ -1,0 +1,19 @@
+File; Clique; Time (sec)
+brock200_1.clq; 21; 19.9974
+brock200_2.clq; 12; 0.098924
+brock200_3.clq; 15; 0.575518
+brock200_4.clq; 17; 2.29587
+C125.9.clq; 34; 2.05308
+gen200_p0.9_44.clq; 44; 121.672
+gen200_p0.9_55.clq; 55; 15.0719
+hamming8-4.clq; 16; 1.5133
+johnson16-2-4.clq; 8; 2.19447
+johnson8-2-4.clq; 4; 0.000169
+keller4.clq; 11; 0.328292
+MANN_a27.clq; 126; 56.8111
+MANN_a9.clq; 16; 0.001137
+p_hat1000-1.clq; 10; 18.9092
+p_hat1500-1.clq; 12; 310.139
+p_hat300-3.clq; 36; 83.3741
+san1000.clq; 15; 216.363
+sanr200_0.9.clq; 42; 1475.44
