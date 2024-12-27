@@ -1,0 +1,5 @@
+venv
+*.pkl
+*.txt
+exps
+.DS_Store
