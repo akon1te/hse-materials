@@ -1,0 +1,39 @@
+topics:
+  raw_data_topic_name: raw_data
+  processing_topic_name: processing
+  visualization_topic_name: visualization
+  ml_topic_name: ml
+
+bootstrap_servers: &bootstrap_servers localhost:9095
+
+stages_configs:
+  raw_data_configs:
+    producer_config:
+      bootstrap.servers: *bootstrap_servers 
+    n_producers: 1
+
+  processing_configs:
+    consumer_config:
+      bootstrap.servers: *bootstrap_servers 
+      group.id: processor-group
+        
+    producer_config: 
+      bootstrap.servers: *bootstrap_servers 
+
+  visualization_configs:
+    consumer_config:
+      bootstrap.servers: *bootstrap_servers 
+      group.id: visualization-group
+
+    producer_config: 
+      bootstrap.servers: *bootstrap_servers 
+
+  ml_configs:
+    consumer_config:
+      bootstrap.servers: *bootstrap_servers 
+      group.id: ml-group
+    
+    producer_config: 
+      bootstrap.servers: *bootstrap_servers 
+
+    
