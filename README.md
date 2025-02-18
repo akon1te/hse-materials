@@ -11,25 +11,17 @@
 ## Структура проекта
 ```bash
 .
-├── venv/                     # Виртуальное окружение Python
-├── data/                     # Исходные и обработанные данные
-│   ├── train_augmented.csv   # Аугментированные данные
-│   └── train.csv            # Оригинальные данные
-├── img/                      # Визуализации и графики
-│   ├── metrics.jpeg          # Метрики модели
-│   ├── model_infer_analysis.jpeg  # Анализ предсказаний
-│   └── raw_data_analysis.jpeg     # EDA исходных данных
-├── src/                      # Исходный код
-│   ├── analysis.py           # Анализ данных
-│   ├── config.yaml           # Настройки проекта
-│   ├── extraction.py         # Загрузка данных
-│   └── processing.py         # Препроцессинг
-├── .gitignore                # Игнорируемые файлы
-├── app.py                    # Главное приложение
-├── docker-compose.yaml       # Конфигурация Docker
-├── pipe.ipynb                # Пайплайн в Jupyter
-├── README.md                 # Документация
-└── start.sh                  # Скрипт запуска
+├── venv/                     
+├── data/                    
+│   └── train_augmented.csv   # Аугментированные данные 
+├── img/                      
+├── src/
+│   ├── config.yaml           # Конфиги топиков и продюсеров/консьюмеров
+│   ├── analysis.py           # Скрипт с классом инференса ML модели
+│   ├── extraction.py         # Скрипт с загрузкой сырых данных в кафку
+│   └── processing.py         # Скрипт с препроцессингом (токенизацией) сырых данных
+├── app.py                    # Приложение на streamlit с визулизацией
+└── docker-compose.yaml       # Конфигурация Docker
 ```
 
 ## Визуализация
