@@ -9,28 +9,28 @@
 Для ML части используется pretrain модель [s-nlp/roberta_toxicity_classifier](https://huggingface.co/s-nlp/roberta_toxicity_classifier)
 
 ## Структура проекта
-
+```bash
 .
 ├── venv/                     # Виртуальное окружение Python
-├── data/                     # Данные для обучения и обработки
+├── data/                     # Исходные и обработанные данные
 │   ├── train_augmented.csv   # Аугментированные данные
-│   └── train.csv            # Исходные данные
+│   └── train.csv            # Оригинальные данные
 ├── img/                      # Визуализации и графики
 │   ├── metrics.jpeg          # Метрики модели
-│   ├── model_infer_analysis.jpeg  # Анализ инференса
-│   └── raw_data_analysis.jpeg     # Анализ исходных данных
-├── src/                      # Исходный код проекта
-│   ├── analysis.py           # Скрипты анализа данных
-│   ├── config.yaml           # Конфигурационные параметры
-│   ├── extraction.py         # Извлечение данных
-│   └── processing.py         # Обработка данных
-├── .gitignore                # Игнорируемые файлы для Git
-├── app.py                    # Основной скрипт приложения
-├── config.yaml               # Главный конфигурационный файл
-├── docker-compose.yaml       # Docker-конфигурация
-├── pipe.ipynb                # Jupyter Notebook с пайплайном
-├── README.md                 # Документация проекта
-└── start.sh                  # Скрипт запуска проекта
+│   ├── model_infer_analysis.jpeg  # Анализ предсказаний
+│   └── raw_data_analysis.jpeg     # EDA исходных данных
+├── src/                      # Исходный код
+│   ├── analysis.py           # Анализ данных
+│   ├── config.yaml           # Настройки проекта
+│   ├── extraction.py         # Загрузка данных
+│   └── processing.py         # Препроцессинг
+├── .gitignore                # Игнорируемые файлы
+├── app.py                    # Главное приложение
+├── docker-compose.yaml       # Конфигурация Docker
+├── pipe.ipynb                # Пайплайн в Jupyter
+├── README.md                 # Документация
+└── start.sh                  # Скрипт запуска
+```
 
 ## Визуализация
 Визуализация выполнена на streamlit:
