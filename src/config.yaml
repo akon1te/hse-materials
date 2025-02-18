@@ -4,36 +4,34 @@ topics:
   visualization_topic_name: visualization
   ml_topic_name: ml
 
-bootstrap_servers: &bootstrap_servers localhost:9095
+bootstrap_servers1: &bootstrap_servers1 localhost:9095
+bootstrap_servers2: &bootstrap_servers2 localhost:9096
 
 stages_configs:
   raw_data_configs:
     producer_config:
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers1 
     n_producers: 1
 
   processing_configs:
     consumer_config:
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers1 
       group.id: processor-group
         
     producer_config: 
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers2 
 
   visualization_configs:
     consumer_config:
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers1
       group.id: visualization-group
-
-    producer_config: 
-      bootstrap.servers: *bootstrap_servers 
-
+      
   ml_configs:
     consumer_config:
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers2 
       group.id: ml-group
     
     producer_config: 
-      bootstrap.servers: *bootstrap_servers 
+      bootstrap.servers: *bootstrap_servers1
 
     
