@@ -115,6 +115,7 @@ def main(data_path: str, n_nodes: int):
     spark = (
         SparkSession.builder
         .appName(f'SalaryAnalysis_{n_nodes}nodes')
+        .config("spark.driver.memory", "10g")
         .getOrCreate()
     )
     

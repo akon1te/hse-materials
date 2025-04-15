@@ -32,7 +32,7 @@ services:
     ports:
       - 9864:9864
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode1:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
@@ -49,8 +49,10 @@ services:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
     container_name: datanode2
     restart: always
+    ports:
+      - 9865:9865
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode2:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
@@ -67,8 +69,10 @@ services:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
     container_name: datanode3
     restart: always
+    ports:
+      - 9866:9866
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode3:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
@@ -84,7 +88,7 @@ services:
   spark-master:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     hostname: spark-master
     container_name: spark-master
     command: bin/spark-class org.apache.spark.deploy.master.Master
@@ -109,7 +113,7 @@ services:
   spark-worker-1:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     hostname: spark-worker-1
     container_name: spark-worker-1
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
@@ -125,9 +129,49 @@ services:
       SPARK_WORKER_MEMORY: 2g
       SPARK_MASTER_URL: spark://spark-master:7077
 
+  spark-worker-2:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    hostname: spark-worker-2
+    container_name: spark-worker-2
+    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    depends_on:
+      - spark-master
+    ports:
+      - "8082:8081"
+    networks:
+      - network1
+    environment:
+      SPARK_MODE: worker
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 2g
+      SPARK_MASTER_URL: spark://spark-master:7077
+
+  spark-worker-3:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    hostname: spark-worker-3
+    container_name: spark-worker-3
+    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    depends_on:
+      - spark-master
+    ports:
+      - "8083:8081"
+    networks:
+      - network1
+    environment:
+      SPARK_MODE: worker
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 2g
+      SPARK_MASTER_URL: spark://spark-master:7077
+
 volumes:
   hadoop_namenode:
-  hadoop_datanode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+  hadoop_datanode3:
   hadoop_historyserver:
 
 networks:
