@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spark-lakehouse
+    container_name: spark
+    volumes:
+      - ./src/etl_pipeline.py:/app/etl_pipeline.py
+      - ./src/ml_pipeline.py:/app/ml_pipeline.py
+      - ./data:/app/data
+      - ./logs:/app/logs
+    working_dir: /app
+    command: tail -f /dev/null
+    ports:
+      - "5000:5000"
