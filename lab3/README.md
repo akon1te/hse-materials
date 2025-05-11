@@ -1,15 +1,25 @@
-# Lab3 Spark + DataLake + MlFlow
+# Lab2 Spark + DataLake + MlFlow
 Мяков Тимофей ИАД24
 
-## Dataset
-
-Датасет взят [отсюда](https://github.com/akmand/datasets/blob/main/baseball.csv) и аугментирован для достижения нужного кол-ва строк.
-
-
-## Getting start
-Запустить в командной строке:
-```bash 
-run_pipeline.sh
+## Запуск 
+```bash
+docker-compose down #если перезапускаешь 
+docker-compose build
+docker-compose up
 ```
 
-## Results
+
+## Датасет
+Датасет взят [отсюда](https://github.com/akmand/datasets/blob/main/baseball.csv) и аугментирован до нужных размеров (100000+ строк). 
+
+
+## Результаты экспериментов
+
+Общая инфа по эксперименту
+![](./img/info.png)
+
+Залогрированы параметры RandomForestClf
+![](./img/params.png)
+
+Залогированы метрики на валидационной выборке
+![](./img/metrics.png)

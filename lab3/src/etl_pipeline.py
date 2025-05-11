@@ -4,16 +4,11 @@ import logging
 
 
 def loader(
+    spark: SparkSession,
     origin_path: str,
 ):
     logger = logging.getLogger("py4j")
     logger.setLevel(logging.ERROR)
-
-    spark = SparkSession.builder \
-        .appName("EtlPipeline") \
-        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
-        .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
-        .getOrCreate()
     
     # reading raw dataset (bronze layer)
     raw_dataset = spark.read.csv(origin_path, header=True, inferSchema=True) 
@@ -46,9 +41,3 @@ def loader(
         .mode("overwrite") \
         .option("delta.autoOptimize.optimizeWrite", "true") \
         .save("/app/data/gold/prepared_dataset")
-
-
-if __name__ == "__main__":
-    loader(
-        origin_path="/app/data/raw_dataset.csv", 
-    )
