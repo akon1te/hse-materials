@@ -5,7 +5,7 @@ services:
   spark:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     image: spark-lakehouse
     container_name: spark
     volumes:
