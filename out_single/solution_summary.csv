@@ -1,0 +1,2 @@
+status,objective_total_cost,vehicle_capacity,num_nodes,num_edges,num_commodities,active_arcs,nonzero_flows,wall_time_ms,iterations,nodes
+FEASIBLE (time/limits),10379671127.216599,100.0,19,342,115,62,342,317058,549048,5149
