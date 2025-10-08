@@ -1,10 +1,11 @@
-from collections import defaultdict, Counter
+from collections import Counter
 
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import seaborn as sns
 import pandas as pd
 import numpy as np
+
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 
 
 def make_simle_stats(data):

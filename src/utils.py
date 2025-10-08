@@ -15,9 +15,9 @@ def load_natasha_data(data_dir: str = "./natasha_data") -> Dict[str, List[Dict]]
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding='utf-8') as f:
                 natasha_data[split] = json.load(f)
-            print(f"Загружено {len(natasha_data[split])} примеров из {split}")
+        #    print(f"Загружено {len(natasha_data[split])} примеров из {split}")
         else:
-            print(f"Файл {file_path} не найден")
+        #    print(f"Файл {file_path} не найден")
             natasha_data[split] = []
     
     return natasha_data
