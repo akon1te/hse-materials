@@ -1,0 +1,8 @@
+ipykernel==6.30.1
+natasha==1.6.0
+yargy==0.16.0
+numpy==2.0.2
+pandas==2.3.3
+datasets==4.1.1
+pyarrow==21.0.0
+matplotlib==3.9.4
