@@ -15,9 +15,7 @@
 ## 3) Подсчёт «сырой важности» (energy) для пары $(v,u)$
 
 Для каждой пары соседей $(v,u)$ вычисляется скалярная *энергия внимания* $e_{vu}$:
-$
-e_{vu}=\operatorname{LeakyReLU}!\big(a^\top ,[,\Theta h_v^{(l)} \ \Vert\ \Theta h_u^{(l)},]\big),
-$
+$e_{vu}=\operatorname{LeakyReLU}!\big(a^\top ,[,\Theta h_v^{(l)} \ \Vert\ \Theta h_u^{(l)},]\big)$,
 где:
 
 * $a \in \mathbb{R}^{2D'}$ — обучаемый вектор внимания,
